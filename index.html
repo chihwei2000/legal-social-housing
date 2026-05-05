@@ -3,819 +3,209 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>五星合法社宅廠商查詢</title>
+  <title>五星合法社宅廠商查詢｜中央版社宅包租代管計畫</title>
   <meta name="description" content="選擇區域、輸入聯絡電話即可查詢中央版社宅包租代管合法廠商。房東享稅減免、專業代管、穩收租；房客有補貼、輕鬆住好屋。" />
-
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="zh_TW" />
-<meta property="og:site_name" content="五星合法社宅廠商" />
-<meta property="og:title" content="五星合法社宅廠商查詢｜中央版社宅包租代管計畫" />
-<meta property="og:description" content="選擇區域、輸入聯絡電話即可查詢合法社宅包租代管廠商。房東享稅減免、專業代管、穩收租；房客有補貼、輕鬆住好屋。" />
-<meta property="og:url" content="https://chihwei2000.github.io/legal-social-housing/" />
-<meta property="og:image" content="https://chihwei2000.github.io/legal-social-housing/preview.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="五星合法社宅廠商查詢｜中央版社宅包租代管計畫" />
-<meta name="twitter:description" content="選擇區域、輸入聯絡電話即可查詢合法社宅包租代管廠商。" />
-<meta name="twitter:image" content="https://chihwei2000.github.io/legal-social-housing/preview.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:site_name" content="五星合法社宅廠商" />
+  <meta property="og:title" content="五星合法社宅廠商查詢｜中央版社宅包租代管計畫" />
+  <meta property="og:description" content="選擇區域、輸入聯絡電話即可查詢合法社宅包租代管廠商。房東享稅減免、專業代管、穩收租；房客有補貼、輕鬆住好屋。" />
+  <meta property="og:url" content="https://chihwei2000.github.io/legal-social-housing/" />
+  <meta property="og:image" content="https://chihwei2000.github.io/legal-social-housing/preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="五星合法社宅廠商查詢｜中央版社宅包租代管計畫" />
+  <meta name="twitter:description" content="選擇區域、輸入聯絡電話即可查詢合法社宅包租代管廠商。" />
+  <meta name="twitter:image" content="https://chihwei2000.github.io/legal-social-housing/preview.png" />
   <style>
-    :root {
-      --gold: #facc15;
-      --gold2: #f59e0b;
-      --dark: #0f172a;
-      --shadow: 0 24px 70px rgba(0,0,0,.34);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
-      color: white;
-      background:
-        radial-gradient(circle at top left, rgba(250,204,21,.22), transparent 34%),
-        radial-gradient(circle at 85% 15%, rgba(59,130,246,.22), transparent 30%),
-        linear-gradient(160deg, #020617, #0f172a 45%, #111827);
-      overflow-x: hidden;
-    }
-
-    .wrap {
-      width: min(1180px, calc(100% - 28px));
-      margin: 0 auto;
-      padding: 30px 0 56px;
-    }
-
-    .floating-badge {
-      width: 100%;
-      margin: 0 auto 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(253,230,138,.35);
-      background: rgba(250,204,21,.13);
-      color: #fde68a;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .marquee {
-      position: relative;
-      height: 48px;
-      display: flex;
-      align-items: center;
-    }
-
-    .marquee-track {
-      display: inline-flex;
-      align-items: center;
-      min-width: max-content;
-      animation: marqueeMove 18s linear infinite;
-    }
-
-    .marquee-track span {
-      display: inline-block;
-      padding-right: 60px;
-      font-size: 14px;
-      font-weight: 900;
-    }
-
-    @keyframes marqueeMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.3fr .75fr;
-      gap: 20px;
-      margin-bottom: 22px;
-    }
-
-    .hero-main, .score-box, .filters, .empty {
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-main {
-      padding: clamp(24px, 5vw, 38px);
-      background: rgba(255,255,255,.09);
-      backdrop-filter: blur(18px);
-      animation: rise .65s ease both;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: #fde68a;
-      background: rgba(250,204,21,.16);
-      border: 1px solid rgba(253,230,138,.32);
-      font-size: 14px;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(42px, 7vw, 72px);
-      line-height: .95;
-      letter-spacing: -2px;
-      font-weight: 1000;
-    }
-
-    .subtitle {
-      margin: 18px 0 0;
-      color: #e2e8f0;
-      font-size: clamp(17px, 2vw, 22px);
-      line-height: 1.65;
-      max-width: 780px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .tag {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(2,6,23,.7);
-      color: #e2e8f0;
-      border: 1px solid rgba(255,255,255,.1);
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .score-box {
-      background: linear-gradient(135deg, #fde047, #f59e0b);
-      color: #0f172a;
-      padding: 26px;
-      animation: rise .65s ease .08s both;
-    }
-
-    .score-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .score-label { font-size: 14px; font-weight: 900; opacity: .72; }
-    .score-number { font-size: 56px; font-weight: 1000; line-height: 1; margin-top: 4px; }
-    .score-title { font-weight: 900; }
-    .shield { font-size: 54px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.2)); }
-
-    .mini-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .mini {
-      border-radius: 20px;
-      background: rgba(255,255,255,.42);
-      padding: 16px;
-    }
-
-    .mini strong {
-      display: block;
-      font-size: 30px;
-      font-weight: 1000;
-      margin-top: 4px;
-    }
-
-    .source {
-      margin-top: 20px;
-      font-size: 13px;
-      font-weight: 800;
-      opacity: .78;
-      line-height: 1.55;
-    }
-
-    .filters {
-      padding: 18px;
-      margin-bottom: 26px;
-      background: rgba(15,23,42,.78);
-      backdrop-filter: blur(18px);
-      animation: rise .65s ease .16s both;
-    }
-
-    .filter-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
-      gap: 12px;
-      align-items: end;
-    }
-
-    label span {
-      display: block;
-      margin-bottom: 8px;
-      color: #cbd5e1;
-      font-weight: 900;
-      font-size: 14px;
-    }
-
-    select, input, button {
-      width: 100%;
-      height: 50px;
-      border: 0;
-      border-radius: 18px;
-      font: inherit;
-      font-weight: 900;
-      outline: none;
-    }
-
-    select, input {
-      padding: 0 15px;
-      background: white;
-      color: #0f172a;
-    }
-
-    input:focus, select:focus {
-      box-shadow: 0 0 0 5px rgba(250,204,21,.35);
-    }
-
-    button {
-      cursor: pointer;
-      padding: 0 18px;
-      color: #0f172a;
-      background: #facc15;
-      transition: transform .18s ease, background .18s ease;
-    }
-
-    button:hover {
-      transform: translateY(-2px);
-      background: #fde047;
-    }
-
-    .filter-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-      color: #cbd5e1;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .checkbox {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
-
-    .checkbox input {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--gold);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-      background: white;
-      color: #0f172a;
-      padding: 20px;
-      min-height: 220px;
-      box-shadow: 0 18px 46px rgba(0,0,0,.26);
-      border: 1px solid rgba(255,255,255,.25);
-      opacity: 0;
-      transform: translateY(12px);
-      animation: cardIn .45s ease forwards;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      cursor: pointer;
-    }
-
-    .card:hover {
-      transform: translateY(-10px) rotate(-.35deg) scale(1.018);
-      box-shadow:
-        0 0 0 4px rgba(250,204,21,.75),
-        0 0 30px rgba(250,204,21,.55),
-        0 28px 70px rgba(0,0,0,.34);
-      border-color: rgba(250,204,21,.8);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto auto 0;
-      height: 5px;
-      width: 100%;
-      background: linear-gradient(90deg, transparent, #facc15, #f59e0b, transparent);
-      transform: translateX(-100%);
-      animation: shine 2.6s linear infinite;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      right: -44px;
-      top: -44px;
-      width: 132px;
-      height: 132px;
-      border-radius: 999px;
-      background: rgba(253,224,71,.72);
-      animation: pulse 2.6s ease-in-out infinite;
-    }
-
-    .card-inner { position: relative; z-index: 1; }
-
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .area-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: 999px;
-      background: #020617;
-      color: white;
-      padding: 7px 11px;
-      font-size: 12px;
-      font-weight: 1000;
-    }
-
-    .stars {
-      color: #f59e0b;
-      letter-spacing: -1px;
-      white-space: nowrap;
-      text-shadow: 0 2px 8px rgba(245,158,11,.25);
-    }
-
-    .name {
-      margin: 20px 0 16px;
-      font-size: 24px;
-      line-height: 1.22;
-      min-height: 62px;
-      font-weight: 1000;
-    }
-
-    .phone-button {
-      display: none;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      color: white;
-      background: #020617;
-      border-radius: 24px;
-      padding: 16px;
-      box-shadow: 0 14px 28px rgba(15,23,42,.28);
-      outline: 4px solid rgba(250,204,21,.36);
-      transition: transform .18s ease;
-    }
-
-    .phone-button:hover { transform: scale(1.03); }
-
-    .phone-button::after {
-      content: "";
-      position: absolute;
-      right: -28px;
-      bottom: -28px;
-      width: 96px;
-      height: 96px;
-      border-radius: 999px;
-      background: rgba(250,204,21,.25);
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-
-    .call-label {
-      position: relative;
-      z-index: 1;
-      display: block;
-      color: #fde68a;
-      font-size: 12px;
-      letter-spacing: .5px;
-      font-weight: 1000;
-      line-height: 1.45;
-    }
-
-    .phone-number {
-      position: relative;
-      z-index: 1;
-      display: block;
-      margin-top: 4px;
-      font-size: clamp(29px, 4vw, 42px);
-      line-height: 1;
-      font-weight: 1000;
-      letter-spacing: -1.5px;
-      word-break: break-word;
-    }
-
-    .address {
-      margin: 18px 0 0;
-      color: #475569;
-      font-size: 15px;
-      line-height: 1.55;
-      font-weight: 800;
-    }
-
-    .consult {
-      margin-top: 16px;
-      padding: 14px;
-      border-radius: 18px;
-      background: #fef3c7;
-      border: 1px solid #facc15;
-      color: #0f172a;
-      font-size: 18px;
-      text-align: center;
-      font-weight: 1000;
-      letter-spacing: .5px;
-    }
-
-    .empty {
-      padding: 48px 24px;
-      text-align: center;
-      border-style: dashed;
-      background: rgba(255,255,255,.06);
-    }
-
-    .empty strong {
-      display: block;
-      font-size: 30px;
-      font-weight: 1000;
-      margin-bottom: 8px;
-    }
-
-    .empty span { color: #cbd5e1; font-weight: 700; }
-
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(2,6,23,.72);
-      backdrop-filter: blur(6px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 50;
-    }
-
-    .modal-overlay[hidden] { display: none; }
-
-    .modal-card {
-      position: relative;
-      width: min(620px, 100%);
-      max-height: 90vh;
-      overflow: auto;
-      background: #fff;
-      color: #0f172a;
-      border-radius: 30px;
-      padding: 24px;
-      box-shadow: 0 30px 90px rgba(0,0,0,.42);
-      border: 3px solid rgba(250,204,21,.75);
-      animation: modalIn .22s ease;
-    }
-
-    .modal-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-      padding-right: 46px;
-    }
-
-    .modal-title {
-      margin: 18px 0 16px;
-      font-size: 32px;
-      line-height: 1.2;
-      font-weight: 1000;
-    }
-
-    .modal-close {
-      position: absolute;
-      right: 14px;
-      top: 14px;
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      background: #0f172a;
-      color: #fff;
-      font-size: 20px;
-      font-weight: 900;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-close:hover { background: #1e293b; transform: scale(1.04); }
-
-    .modal-card .phone-button {
-      display: block;
-    }
-
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes cardIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes shine {
-      to { transform: translateX(100%); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: .55; }
-      50% { transform: scale(1.22); opacity: .9; }
-    }
-
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(.96) translateY(8px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    @media (max-width: 960px) {
-      .hero { grid-template-columns: 1fr; }
-      .filter-grid { grid-template-columns: 1fr 1fr; }
-      .grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 640px) {
-      .wrap { width: min(100% - 18px, 1180px); padding-top: 22px; }
-      .marquee { height: 44px; }
-      .marquee-track span { font-size: 12px; padding-right: 42px; }
-      .filter-grid, .grid { grid-template-columns: 1fr; }
-      .hero-main, .score-box, .filters, .card, .modal-card { border-radius: 22px; }
-      .phone-number { font-size: 32px; }
-      .modal-title { font-size: 28px; }
-    }
+    :root{--gold:#facc15;--gold2:#f59e0b;--dark:#0f172a;--shadow:0 24px 70px rgba(0,0,0,.34)}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;color:white;background:radial-gradient(circle at top left,rgba(250,204,21,.22),transparent 34%),radial-gradient(circle at 85% 15%,rgba(59,130,246,.22),transparent 30%),linear-gradient(160deg,#020617,#0f172a 45%,#111827);overflow-x:hidden}.wrap{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:30px 0 56px}.floating-badge{width:100%;margin:0 auto 18px;border-radius:999px;border:1px solid rgba(253,230,138,.35);background:rgba(250,204,21,.13);color:#fde68a;box-shadow:var(--shadow);overflow:hidden;white-space:nowrap}.marquee{height:48px;display:flex;align-items:center}.marquee-track{display:inline-flex;align-items:center;min-width:max-content;animation:marqueeMove 18s linear infinite}.marquee-track span{display:inline-block;padding-right:60px;font-size:14px;font-weight:900}@keyframes marqueeMove{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .hero{display:grid;grid-template-columns:1.3fr .75fr;gap:20px;margin-bottom:22px}.hero-main,.score-box,.filters,.empty{border:1px solid rgba(255,255,255,.12);border-radius:28px;box-shadow:var(--shadow)}.hero-main{padding:clamp(24px,5vw,38px);background:rgba(255,255,255,.09);backdrop-filter:blur(18px);animation:rise .65s ease both}.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;color:#fde68a;background:rgba(250,204,21,.16);border:1px solid rgba(253,230,138,.32);font-size:14px;font-weight:900;margin-bottom:18px}h1{margin:0;font-size:clamp(42px,7vw,72px);line-height:.95;letter-spacing:-2px;font-weight:1000}.subtitle{margin:18px 0 0;color:#e2e8f0;font-size:clamp(17px,2vw,22px);line-height:1.65;max-width:780px}.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.tag{padding:8px 12px;border-radius:999px;background:rgba(2,6,23,.7);color:#e2e8f0;border:1px solid rgba(255,255,255,.1);font-size:14px;font-weight:800}.score-box{background:linear-gradient(135deg,#fde047,#f59e0b);color:#0f172a;padding:26px;animation:rise .65s ease .08s both}.score-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.score-label{font-size:14px;font-weight:900;opacity:.72}.score-number{font-size:56px;font-weight:1000;line-height:1;margin-top:4px}.score-title{font-weight:900}.shield{font-size:54px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.2))}.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}.mini{border-radius:20px;background:rgba(255,255,255,.42);padding:16px}.mini strong{display:block;font-size:30px;font-weight:1000;margin-top:4px}.source{margin-top:20px;font-size:13px;font-weight:800;opacity:.78;line-height:1.55}.filters{padding:18px;margin-bottom:26px;background:rgba(15,23,42,.78);backdrop-filter:blur(18px);animation:rise .65s ease .16s both}.filter-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}label span{display:block;margin-bottom:8px;color:#cbd5e1;font-weight:900;font-size:14px}select,input,button{width:100%;height:50px;border:0;border-radius:18px;font:inherit;font-weight:900;outline:none}select,input{padding:0 15px;background:white;color:#0f172a}input:focus,select:focus{box-shadow:0 0 0 5px rgba(250,204,21,.35)}button{cursor:pointer;padding:0 18px;color:#0f172a;background:#facc15;transition:transform .18s ease,background .18s ease}button:hover{transform:translateY(-2px);background:#fde047}.filter-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;color:#cbd5e1;font-size:14px;font-weight:700}.checkbox{display:inline-flex;align-items:center;gap:8px;cursor:pointer}.checkbox input{width:16px;height:16px;accent-color:var(--gold)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{position:relative;overflow:hidden;border-radius:28px;background:white;color:#0f172a;padding:20px;min-height:220px;box-shadow:0 18px 46px rgba(0,0,0,.26);border:1px solid rgba(255,255,255,.25);opacity:0;transform:translateY(12px);animation:cardIn .45s ease forwards;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;cursor:pointer}.card:hover{transform:translateY(-10px) rotate(-.35deg) scale(1.018);box-shadow:0 0 0 4px rgba(250,204,21,.75),0 0 30px rgba(250,204,21,.55),0 28px 70px rgba(0,0,0,.34);border-color:rgba(250,204,21,.8)}.card::before{content:"";position:absolute;inset:0 auto auto 0;height:5px;width:100%;background:linear-gradient(90deg,transparent,#facc15,#f59e0b,transparent);transform:translateX(-100%);animation:shine 2.6s linear infinite}.card::after{content:"";position:absolute;right:-44px;top:-44px;width:132px;height:132px;border-radius:999px;background:rgba(253,224,71,.72);animation:pulse 2.6s ease-in-out infinite}.card-inner{position:relative;z-index:1}.card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.area-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#020617;color:white;padding:7px 11px;font-size:12px;font-weight:1000}.stars{color:#f59e0b;letter-spacing:-1px;white-space:nowrap;text-shadow:0 2px 8px rgba(245,158,11,.25)}.name{margin:20px 0 16px;font-size:24px;line-height:1.22;min-height:62px;font-weight:1000}.address{margin:18px 0 0;color:#475569;font-size:15px;line-height:1.55;font-weight:800}.consult{margin-top:16px;padding:14px;border-radius:18px;background:#fef3c7;border:1px solid #facc15;color:#0f172a;font-size:18px;text-align:center;font-weight:1000;letter-spacing:.5px}.empty{padding:48px 24px;text-align:center;border-style:dashed;background:rgba(255,255,255,.06)}.empty strong{display:block;font-size:30px;font-weight:1000;margin-bottom:8px}.empty span{color:#cbd5e1;font-weight:700}
+    .modal-overlay{position:fixed;inset:0;background:rgba(2,6,23,.72);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}.modal-overlay[hidden]{display:none}.modal-card{position:relative;width:min(620px,100%);max-height:90vh;overflow:visible;background:#fff;color:#0f172a;border-radius:30px;padding:24px;box-shadow:0 30px 90px rgba(0,0,0,.42);border:3px solid rgba(250,204,21,.75);animation:modalIn .22s ease}.modal-body-scroll{max-height:82vh;overflow:auto;position:relative;z-index:2}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-right:46px}.modal-title{margin:18px 0 16px;font-size:32px;line-height:1.2;font-weight:1000}.modal-close{position:absolute;right:14px;top:14px;width:42px;height:42px;border-radius:999px;background:#0f172a;color:#fff;font-size:20px;font-weight:900;line-height:1;display:flex;align-items:center;justify-content:center;z-index:3}.modal-close:hover{background:#1e293b;transform:scale(1.04)}.phone-button{display:block;position:relative;overflow:hidden;text-decoration:none;color:white;background:#020617;border-radius:24px;padding:16px;box-shadow:0 14px 28px rgba(15,23,42,.28);outline:4px solid rgba(250,204,21,.36);transition:transform .18s ease}.phone-button:hover{transform:scale(1.03)}.phone-button::after{content:"";position:absolute;right:-28px;bottom:-28px;width:96px;height:96px;border-radius:999px;background:rgba(250,204,21,.25);animation:pulse 1.8s ease-in-out infinite}.call-label{position:relative;z-index:1;display:block;color:#fde68a;font-size:12px;letter-spacing:.5px;font-weight:1000;line-height:1.45}.phone-number{position:relative;z-index:1;display:block;margin-top:4px;font-size:clamp(29px,4vw,42px);line-height:1;font-weight:1000;letter-spacing:-1.5px;word-break:break-word}.modal-card.shine-burst{animation:modalPop .35s ease,modalGlow 1.6s ease-out}.modal-card.shine-burst::before,.modal-card.shine-burst::after{content:"";position:absolute;inset:-18px;border-radius:36px;pointer-events:none}.modal-card.shine-burst::before{background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(255,255,255,.18) 28%,rgba(255,255,255,0) 60%);filter:blur(10px);animation:burstFlash .9s ease-out forwards}.modal-card.shine-burst::after{border:3px solid rgba(250,204,21,.95);box-shadow:0 0 18px rgba(250,204,21,.95),0 0 40px rgba(250,204,21,.9),0 0 90px rgba(250,204,21,.7),0 0 150px rgba(255,255,255,.5);animation:ringGlow 1.1s ease-out forwards}.phone-button.glow-phone{animation:phoneGlow 1.5s ease-out;box-shadow:0 0 0 6px rgba(250,204,21,.25),0 0 22px rgba(250,204,21,.55),0 0 45px rgba(250,204,21,.45),0 18px 38px rgba(15,23,42,.35)}
+    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes cardIn{to{opacity:1;transform:translateY(0)}}@keyframes shine{to{transform:translateX(100%)}}@keyframes pulse{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.22);opacity:.9}}@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes modalPop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}@keyframes modalGlow{0%{box-shadow:0 0 0 rgba(250,204,21,0)}35%{box-shadow:0 0 40px rgba(250,204,21,.95),0 0 100px rgba(255,255,255,.4)}100%{box-shadow:0 30px 90px rgba(0,0,0,.42)}}@keyframes burstFlash{0%{opacity:1;transform:scale(.82)}100%{opacity:0;transform:scale(1.35)}}@keyframes ringGlow{0%{opacity:1;transform:scale(.86)}100%{opacity:0;transform:scale(1.22)}}@keyframes phoneGlow{0%{transform:scale(.94);filter:brightness(1.65)}35%{transform:scale(1.04);filter:brightness(1.2)}100%{transform:scale(1);filter:brightness(1)}}@media(max-width:960px){.hero{grid-template-columns:1fr}.filter-grid{grid-template-columns:1fr 1fr}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.wrap{width:min(100% - 18px,1180px);padding-top:22px}.marquee{height:44px}.marquee-track span{font-size:12px;padding-right:42px}.filter-grid,.grid{grid-template-columns:1fr}.hero-main,.score-box,.filters,.card,.modal-card{border-radius:22px}.phone-number{font-size:32px}.modal-title{font-size:28px}}
   </style>
 </head>
 <body>
   <main class="wrap">
-    <div class="floating-badge marquee" aria-label="社會住宅包租代管說明">
-      <div class="marquee-track">
-        <span>房東享稅減免、專業代管、穩收租，房客有補貼、輕鬆住好屋，社會住宅包租代管讓租屋成為省心安居的好選擇</span>
-        <span>房東享稅減免、專業代管、穩收租，房客有補貼、輕鬆住好屋，社會住宅包租代管讓租屋成為省心安居的好選擇</span>
-      </div>
-    </div>
-
-    <section class="hero">
-      <div class="hero-main">
-        <div class="pill">🏆 「中央版社宅包租代管計畫」</div>
-        <h1>五星合法<br>社宅廠商</h1>
-        <p class="subtitle">選擇區域、輸入聯絡電話即可，立刻召喚合法廠商。</p>
-        <div class="tags">
-          <span class="tag">#合法名單</span>
-          <span class="tag">#區域篩選</span>
-          <span class="tag">#電話查詢</span>         
-        </div>
-      </div>
-
-      <aside class="score-box">
-        <div class="score-top">
-          <div>
-            <div class="score-label">目前資料庫</div>
-            <div class="score-number" id="vendorCount">0</div>
-            <div class="score-title"><span id="vendorLabel">家業者</span> + <span id="guildCount">0</span> 個公會</div>
-          </div>
-          <div class="shield">🛡️</div>
-        </div>
-        <div class="mini-stats">
-          <div class="mini">
-            <div class="score-label">涵蓋區域</div>
-            <strong id="areaCount">0</strong>
-          </div>
-          <div class="mini">
-            <div class="score-label">查詢結果</div>
-            <strong id="resultCount">0</strong>
-          </div>
-        </div>
-        <p class="source">資料來源：國家住宅及都市更新中心五期連絡資訊。實際合作前，仍建議再以官方資訊或電話確認最新資料。</p>
-      </aside>
-    </section>
-
-    <section class="filters">
-      <div class="filter-grid">
-        <label>
-          <span>📍 區域</span>
-          <select id="areaSelect"></select>
-        </label>
-        <label>
-          <span>☎️ 聯絡電話</span>
-          <input id="phoneInput" type="search" placeholder="例：04、0800、058" />
-        </label>
-        <button id="resetBtn" type="button">↻ 重置</button>
-      </div>
-      <div class="filter-bottom">
-        <label class="checkbox"><input id="onlyVendors" type="checkbox" checked />只顯示業者，隱藏公會</label>
-        <div>提示：首頁先隱藏電話，點一下卡牌會置中顯示並出現電話。</div>
-      </div>
-    </section>
-
+    <div class="floating-badge marquee" aria-label="社會住宅包租代管說明"><div class="marquee-track"><span>房東享稅減免、專業代管、穩收租，房客有補貼、輕鬆住好屋，社會住宅包租代管讓租屋成為省心安居的好選擇</span><span>房東享稅減免、專業代管、穩收租，房客有補貼、輕鬆住好屋，社會住宅包租代管讓租屋成為省心安居的好選擇</span></div></div>
+    <section class="hero"><div class="hero-main"><div class="pill">🏆 「中央版社宅包租代管計畫」</div><h1>五星合法<br>社宅廠商</h1><p class="subtitle">選擇區域、輸入聯絡電話即可，立刻召喚合法廠商。首頁先隱藏電話，點選卡牌後才顯示電話，並發出耀眼光芒。</p><div class="tags"><span class="tag">#合法名單</span><span class="tag">#區域篩選</span><span class="tag">#電話查詢</span><span class="tag">#點擊顯示電話</span></div></div><aside class="score-box"><div class="score-top"><div><div class="score-label">目前資料庫</div><div class="score-number" id="vendorCount">0</div><div class="score-title"><span id="vendorLabel">家業者</span> + <span id="guildCount">0</span> 個公會</div></div><div class="shield">🛡️</div></div><div class="mini-stats"><div class="mini"><div class="score-label">涵蓋區域</div><strong id="areaCount">0</strong></div><div class="mini"><div class="score-label">查詢結果</div><strong id="resultCount">0</strong></div></div><p class="source">資料來源：國家住宅及都市更新中心五期連絡資訊。實際合作前，仍建議再以官方資訊或電話確認最新資料。</p></aside></section>
+    <section class="filters"><div class="filter-grid"><label><span>📍 區域</span><select id="areaSelect"></select></label><label><span>☎️ 聯絡電話</span><input id="phoneInput" type="search" placeholder="例：04、0800、058" /></label><button id="resetBtn" type="button">↻ 重置</button></div><div class="filter-bottom"><label class="checkbox"><input id="onlyVendors" type="checkbox" checked />只顯示業者，隱藏公會</label><div>提示：首頁不顯示電話，點一下卡牌會置中顯示電話並發出耀眼光芒。</div></div></section>
     <section id="cards" class="grid" aria-live="polite"></section>
-
-    <div id="modalOverlay" class="modal-overlay" hidden>
-      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <button class="modal-close" id="modalClose" type="button" aria-label="關閉">✕</button>
-        <div class="modal-head">
-          <span class="area-pill" id="modalArea"></span>
-          <span class="stars" aria-label="五星合法卡牌">★★★★★</span>
-        </div>
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <a class="phone-button" id="modalPhoneLink" href="#">
-          <span class="call-label" id="modalCallLabel"></span>
-          <span class="phone-number" id="modalPhone"></span>
-        </a>
-        <p class="address" id="modalAddress"></p>
-        <div class="consult">免費諮詢・歡迎來電</div>
-      </div>
-    </div>
+    <div id="modalOverlay" class="modal-overlay" hidden><div class="modal-card" id="modalCard" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" type="button" aria-label="關閉">✕</button><div class="modal-body-scroll"><div class="modal-head"><span class="area-pill" id="modalArea"></span><span class="stars" aria-label="五星合法卡牌">★★★★★</span></div><h2 class="modal-title" id="modalTitle"></h2><a class="phone-button" id="modalPhoneLink" href="#"><span class="call-label" id="modalCallLabel"></span><span class="phone-number" id="modalPhone"></span></a><p class="address" id="modalAddress"></p><div class="consult">免費諮詢・歡迎來電</div></div></div></div>
   </main>
 
+  <script id="raw-data" type="text/plain">
+公會
+台北市租賃住宅服務商業同業公會 02-2577-1778 台北市中山區建國北路三段92號5樓
+新北市租賃住宅服務商業同業公會 02-8951-8110 新北市新莊區富貴路502號4樓
+桃園市租賃住宅服務商業同業公會 03-434-2020 桃園市中壢區中央西路一段120號20樓之7
+臺中市租賃住宅服務商業同業公會 04-2293-0623 臺中市西屯區文心路三段241號2樓之7
+臺南市租賃住宅服務商業同業公會 06-298-7051 臺南市安平區永華路二段248號8樓之2
+高雄市租賃住宅服務商業同業公會 07-221-1659 高雄市苓雅區新光路38號11樓之3、5
+台北市業者
+兆基屋管股份有限公司 02-2395-5522 臺北市內湖區內湖路一段98號
+大管家房屋管理顧問有限公司 02-2731-7933 臺北市中山區長安東路一段25號9樓
+禾豐好宅管理顧問股份有限公司 02-2547-5003 臺北市中山區南京東路三段197號七樓
+星鴻股份有限公司 02-7755-2669 臺北市萬華區中華路一段106號四樓
+匯康資產管理有限公司 02-6617-8885 臺北市中山區松江路139號2樓之4
+聯勝開發有限公司 02-2570-5000 臺北市松山區南京東路四段56號5樓
+五泰房屋仲介有限公司臺北分公司 0800-666-464 臺北市士林區德行東路90巷27弄14號
+顧家租賃住宅服務股份有限公司 02-2523-8928 臺北市中正區忠孝西路一段66號28樓
+東昇國際管理顧問股份有限公司 02-7701-2996 臺北市中正區忠孝東路二段130號9樓之5
+凌群不動產有限公司 02-2550-6685 臺北市大同區寧夏路155號7樓
+松信不動產有限公司 02-2547-1133 臺北市信義區忠孝東路五段179號1樓
+易居管理顧問股份有限公司 02-227-27000 臺北市大同區民生西路290號9樓
+新北市業者
+鼎倫意志力租屋有限公司 02-89530199 新北市板橋區板新路27號8樓
+嘉禾地產有限公司新北分公司 03-275-9440 新北市三重區中正北路415號三樓
+敦信不動產經紀有限公司新北分公司 02-7755-3662 新北市新莊區福營路159號1樓
+力群不動產經紀有限公司三重分公司 02-2987-6666 新北市三重區正義北路386號
+都營不動產開發股份有限公司 02-2929-0112 新北市永和區中和路453號1樓
+新北市地產開發有限公司 02-8522-6989 新北市新莊區化成路638號
+嘉暘開發有限公司新北分公司 02-7755-3655 新北市蘆洲區長興路39號
+住福實業股份有限公司 02-2623-6520 新北市淡水區中山北路二段189巷17號
+兆基屋管股份有限公司新北第一分公司 02-2941-6222 新北市板橋區三民路2段37號18樓之1
+大管家房屋管理顧問有限公司新北分公司 02-2957-5588 新北市板橋區中山路一段210號一樓
+禾豐好宅管理顧問股份有限公司新北分公司 02-2547-5003 新北市中和區景平路666號三樓
+喬陽管理顧問有限公司新北分公司 03-355-5200 新北市土城區中央路二段224號二樓
+吉翔不動產有限公司 0800-066-660 新北市新莊區昌平街84號4樓
+星鴻股份有限公司 02-7755-2669 新北市三重區重新路一段84號3樓
+匯康資產管理有限公司新北分公司 02-6617-8885 新北市淡水區民權路38號7樓
+聯勝資產管理顧問有限公司 02-8521-8872 新北市新莊區新北大道二段227號1樓
+五泰房屋仲介有限公司 0800-666-464 新北市五股區新五路三段141號
+東昇國際管理顧問股份有限公司板橋分公司 02-8252-0127 新北市板橋區文化路2段451號3樓
+凌群不動產有限公司 02-2550-6685 新北市汐止區福德一路272巷16號2樓
+易居管理顧問股份有限公司 02-2272-7000 新北市板橋區民族路61號2樓
+桃園市業者
+鼎倫租賃住宅代管有限公司 03-493-1199 桃園市中壢區環西路二段369號
+大佳地產股份有限公司 0800-321-701 桃園市桃園區同安街455巷3弄9號
+敦信不動產經紀有限公司 03-466-3366 桃園市中壢區中北路二段462號1樓
+嘉禾地產有限公司 03-275-9440 桃園市八德區中正路158號
+嘉暘開發有限公司 03-458-8555 桃園市平鎮區金陵路228號二樓
+築夢家物業有限公司 03-326-7001 桃園市桃園區慈光街150號
+嘉晟租賃住宅代管有限公司 03-252-2518 桃園市平鎮區環南路18號8樓之2
+兆基屋管股份有限公司桃園分公司 03-325-3033 桃園市中壢區新生路377號
+鎮信不動產經紀有限公司 0800-365-581 桃園市中壢區健行路154號
+尊信不動產經紀有限公司 03-435-4477 桃園市中壢區延平路118號
+喬陽管理顧問有限公司 03-355-5200 桃園市桃園區同德十一街56號11樓之1
+吉富不動產仲介經紀有限公司 03-433-6677 桃園市中壢區中華路一段215號3樓
+星鴻股份有限公司 03-275-7773 桃園市中壢區環北路400號12樓之6
+五泰房屋仲介有限公司桃園分公司 0800-666-464 桃園市八德區興豐路493號2樓
+凌群不動產有限公司 02-2550-6685 桃園市八德區和平路295號2樓
+台一不動產股份有限公司 03-220-0090 桃園市桃園區泰昌三街17號
+鴻富租賃住宅代管有限公司 03-275-6513 桃園市中壢區環北路400號5樓之3
+新瑞豐仲介有限公司 03-439-1833 桃園市平鎮區中豐路南勢二段301號
+匯勝房屋管理顧問股份有限公司 03-331-6168 桃園市桃園區復興路51-2號9樓之1
+睿達租賃住宅服務股份有限公司桃園分公司 02-7756-2262 桃園市大園區青昇二街58號
+臺中市業者
+意志力投資有限公司 04-2242-0101 臺中市北屯區文心路四段955號11樓之1
+棣寶不動產有限公司 04-2436-5885 臺中市北屯區軍功路一段543號
+嘉暘開發有限公司台中分公司 03-458-8555 臺中市西屯區文心路三段241號21樓之6
+總管家租賃住宅服務股份有限公司 0800-058-988 臺中市北區台灣大道二段340號9樓之2
+兆基屋管股份有限公司台中分公司 04-2220-5353 臺中市北區三民路三段132號
+昶勝不動產仲介經紀有限公司 04-2328-0999 臺中市西區美村路一段76號1樓
+匯揚不動產經紀實業有限公司 04-2233-1007 臺中市北屯區文心路四段290號1樓
+喬陽管理顧問有限公司台中分公司 03-355-5200 臺中市西屯區文心路二段598號7樓之3
+星鴻股份有限公司 04-3707-2368 臺中市北屯區文心路四段698號6樓之1
+大管家管理顧問有限公司 04-2322-2277 臺中市西屯區大墩路921號2樓
+五泰房屋仲介有限公司台中分公司 0800-666-464 臺中市北屯區崇德二路二段276-1號
+頎策開發有限公司 04-229-7655 臺中市西屯區文心路三段241號22樓之2
+聯勤不動產經紀有限公司 04-2422-1555 臺中市北區崇德路一段492號
+匯康資產管理有限公司台中分公司 02-6617-8885 臺中市南區樹義里文心南路837號
+嘉禾地產有限公司台中分公司 04-2291-2277 臺中市北屯區平德路74號1樓
+嘉晟租賃住宅代管有限公司台中分公司 03-252-2518 臺中市北屯區文心路四段698號23樓之1
+臺南市業者
+土帝公地產開發有限公司 06-279-7245 臺南市安南區大安街447號
+兆基屋管股份有限公司台南分公司 06-220-0022 臺南市北區文賢一路300巷29號
+尊信不動產經紀有限公司 台南分公司 06-223-1919 台南市永康區復國路50號
+不用管股份有限公司 06-275-0088 臺南市東區東光路二段45號1樓
+國成物業管理股份有限公司 06-208-0061 臺南市東區東門路三段37巷73號
+大晟資產管理顧問股份有限公司台南分公司 0809-090-879 臺南市安平區永華路二段248號13樓之1
+星鴻股份有限公司 06-703-2305 臺南市北區西門路三段159號十二樓之3
+五泰房屋仲介有限公司台南分公司 0800-666-464 臺南市北區海安路三段253號
+凌群不動產有限公司 06-208-9562 臺南市永康區小東路689之83號
+好家在物業有限公司 0927-619-822 臺南市北區前鋒路308號1樓
+高雄市業者
+嘉暘開發有限公司高雄分公司 07-390-0133 高雄市三民區大昌二路42號1樓
+百聚不動產有限公司 07-285-2068 高雄市新興區八德二路18號
+兆基屋管股份有限公司高雄分公司 07-222-2211/0800-666-444 高雄市苓雅區中正二路175號19樓之2
+一佳租賃住宅服務有限公司 07-740-6633 高雄市鳳山區中正路64號1樓
+中迪房屋資產管理有限公司 07-269-1037 高雄市苓雅區新光路38號37樓之3
+全佳租賃住宅服務有限公司 07-716-1577 高雄市苓雅區三多二路287之1號
+賦御地產事業有限公司 07-341-3833 高雄市三民區天祥二路38號
+國成資產管理顧問有限公司 06-208-0061 高雄市前鎮區民裕街51號
+星鴻股份有限公司 07-976-3955 高雄市苓雅區四維四路3號10樓之1
+大管家租賃住宅服務有限公司 07-799-8859 高雄市鳳山區青年路一段322號
+五泰房屋仲介有限公司高雄分公司 0800-666-464 高雄市前金區七賢二路348號
+宜居不動產管理顧問股份有限公司 07-222-0886 高雄市三民區錦田路171號
+基隆市業者
+聯碩物業有限公司 02-2428-1234 基隆市中正區義一路38號2樓
+兆基屋管股份有限公司基隆分公司 02-2425-1155 基隆市中山區復興路211號之1
+星鴻股份有限公司 02-7755-2669 基隆市泰安路4巷16號
+聯勝租賃住宅服務有限公司 02-3401-0158 基隆市安樂區安樂路一段5號1樓
+新竹市業者
+兆基屋管股份有限公司新竹分公司 03-528-0000 新竹市北區經國路二段155號
+星鴻股份有限公司 03-275-7773 新竹市北區四維路130號9樓之8
+大管家租賃住宅代管有限公司 03-534-3311/03-531-2288 新竹市東區民權路84號/新竹市東區經國路一段632號
+新竹縣業者
+兆基屋管股份有限公司竹縣分公司 03-597-6622 新竹縣湖口鄉榮光一路200號
+星鴻股份有限公司 02-7755-2669 新竹縣竹北市光明五街342號二樓
+大管家租賃住宅代管有限公司竹縣分公司 03-657-2255 新竹縣竹北市中興里自強南路43號1樓
+苗栗縣業者
+兆基屋管股份有限公司苗栗分公司 037-681122 苗栗縣頭份東民路180號2樓
+大晟資產管理顧問股份有限公司苗栗分公司 037-581733 苗栗縣竹南鎮科專六路328號
+五泰房屋仲介有限公司苗栗分公司 0800-666-464 苗栗縣頭份市中央路490號
+彰化縣業者
+意志力租賃住宅代管有限公司 04-711-9899 彰化縣彰化市大埔路490號1樓
+兆基屋管股份有限公司彰化分公司 04-761-9900 彰化縣彰化市中央路186之1號
+安東管理顧問有限公司 0800-365-581 彰化縣員林市莒光路373號2樓
+大晟資產管理顧問股份有限公司 04-720-1557 彰化縣彰化市中山路二段395號
+昊霖租賃物業有限公司 04-752-5508 彰化縣彰化市民族路117號
+星鴻股份有限公司 04-706-0725 彰化縣彰化市華山路37號11樓之4
+南投縣業者
+兆基屋管股份有限公司南投分公司 049-256-1101 南投縣草屯鎮富中路55號
+安東租賃有限公司 0800-365-581 南投縣草屯鎮博愛路411號
+星鴻股份有限公司 049-700-9327 南投縣草屯鎮中正路755號七樓之1
+雲林縣業者
+大晟資產管理顧問股份有限公司雲林分公司 05-595-4471 雲林縣斗南鎮五福二街33號3樓
+兆基屋管股份有限公司雲林分公司 05-537-7700 雲林縣斗六市成功里自強街77號
+嘉義市業者
+兆基屋管股份有限公司嘉義分公司 05-228-8333 嘉義市東區中山路186號1-2樓
+星鴻股份有限公司 05-320-9119 嘉義市西區上海路175號2樓
+生豐租賃住宅代管有限公司 05-233-7338 嘉義市西區北港路258號1樓
+嘉義縣業者
+總管家租賃住宅服務股份有限公司嘉義分公司 05-226-2228 嘉義縣民雄鄉圳溝墘18號
+兆基屋管股份有限公司嘉義縣分公司 05-362-7333 嘉義縣朴子市小槺榔一路27號1樓
+星鴻股份有限公司 05-320-9119 嘉義縣太保市新埤里6鄰新埤232號之2
+屏東縣業者
+兆基屋管股份有限公司屏東分公司 08-735-3337/0800-666-444 屏東縣屏東市自由路457號1樓
+尚安居租賃管理顧問有限公司 08-736-5115 屏東縣屏東市機場北路446號11樓
+富山房屋買賣有限公司 08-788-9999 屏東縣潮州鎮五福路10號1樓
+宜蘭縣業者
+兆基屋管股份有限公司宜蘭分公司 03-936-0066 宜蘭縣宜蘭市女中路三段398號1樓
+星鴻股份有限公司 02-7755-2669 宜蘭縣頭城鎮沙成路38號
+大晟資產管理顧問股份有限公司宜蘭分公司 03-965-9911 宜蘭縣五結鄉中正路二段11號
+花蓮縣業者
+兆基屋管股份有限公司花蓮分公司 03-835-0077 花蓮縣花蓮市裕民路135號
+大晟資產管理顧問股份有限公司花蓮分公司 03-831-6677 花蓮縣花蓮市忠孝街60之1號1樓
+鑑蓮不動產股份有限公司 03-854-5885 花蓮縣吉安鄉吉興路一段48號
+臺東縣業者
+富豐不動產有限公司 08-922-7666 臺東縣臺東市仁二街280號
+好房不動產管理顧問有限公司 08-934-1188 臺東縣臺東市傳廣路55號
+  </script>
   <script>
-    const vendors = [
-      { type: "公會", area: "臺中市", name: "臺中市租賃住宅服務商業同業公會", phone: "04-2293-0623", address: "臺中市西屯區文心路三段241號2樓之7" },
-      { type: "業者", area: "臺中市", name: "總管家租賃住宅服務股份有限公司", phone: "0800-058-988", address: "臺中市北區台灣大道二段340號9樓之2" },
-      { type: "業者", area: "臺中市", name: "兆基屋管股份有限公司台中分公司", phone: "04-2220-5353", address: "臺中市北區三民路三段132號" },
-      { type: "業者", area: "臺中市", name: "大管家管理顧問有限公司", phone: "04-2322-2277", address: "臺中市西屯區大墩路921號2樓" },
-      { type: "業者", area: "臺中市", name: "星鴻股份有限公司", phone: "04-3707-2368", address: "臺中市北屯區文心路四段698號6樓之1" },
-      { type: "業者", area: "臺中市", name: "意志力投資有限公司", phone: "04-2242-0101", address: "臺中市北屯區文心路四段955號11樓之1" },
-      { type: "業者", area: "臺中市", name: "棣寶不動產有限公司", phone: "04-2436-5885", address: "臺中市北屯區軍功路一段543號" },
-      { type: "業者", area: "臺中市", name: "嘉暘開發有限公司台中分公司", phone: "03-458-8555", address: "臺中市西屯區文心路三段241號21樓之6" },
-      { type: "業者", area: "臺中市", name: "昶勝不動產仲介經紀有限公司", phone: "04-2328-0999", address: "臺中市西區美村路一段76號1樓" },
-      { type: "業者", area: "臺中市", name: "匯揚不動產經紀實業有限公司", phone: "04-2233-1007", address: "臺中市北屯區文心路四段290號1樓" },
-      { type: "業者", area: "臺中市", name: "喬陽管理顧問有限公司台中分公司", phone: "03-355-5200", address: "臺中市西屯區文心路二段598號7樓之3" },
-      { type: "業者", area: "臺中市", name: "五泰房屋仲介有限公司台中分公司", phone: "0800-666-464", address: "臺中市北屯區崇德二路二段276-1號" },
-      { type: "業者", area: "臺中市", name: "頎策開發有限公司", phone: "04-229-7655", address: "臺中市西屯區文心路三段241號22樓之2" },
-      { type: "業者", area: "臺中市", name: "聯勤不動產經紀有限公司", phone: "04-2422-1555", address: "臺中市北區崇德路一段492號" },
-      { type: "業者", area: "臺中市", name: "匯康資產管理有限公司台中分公司", phone: "02-6617-8885", address: "臺中市南區樹義里文心南路837號" },
-      { type: "業者", area: "臺中市", name: "嘉禾地產有限公司台中分公司", phone: "04-2291-2277", address: "臺中市北屯區平德路74號1樓" },
-      { type: "業者", area: "臺中市", name: "嘉晟租賃住宅代管有限公司台中分公司", phone: "03-252-2518", address: "臺中市北屯區文心路四段698號23樓之1" },
-      { type: "公會", area: "台北市", name: "台北市租賃住宅服務商業同業公會", phone: "02-2577-1778", address: "台北市中山區建國北路三段92號5樓" },
-      { type: "業者", area: "台北市", name: "兆基屋管股份有限公司", phone: "02-2395-5522", address: "臺北市內湖區內湖路一段98號" },
-      { type: "業者", area: "台北市", name: "大管家房屋管理顧問有限公司", phone: "02-2731-7933", address: "臺北市中山區長安東路一段25號9樓" },
-      { type: "業者", area: "台北市", name: "禾豐好宅管理顧問股份有限公司", phone: "02-2547-5003", address: "臺北市中山區南京東路三段197號七樓" },
-      { type: "業者", area: "台北市", name: "星鴻股份有限公司", phone: "02-7755-2669", address: "臺北市萬華區中華路一段106號四樓" },
-      { type: "業者", area: "台北市", name: "匯康資產管理有限公司", phone: "02-6617-8885", address: "臺北市中山區松江路139號2樓之4" },
-      { type: "公會", area: "新北市", name: "新北市租賃住宅服務商業同業公會", phone: "02-8951-8110", address: "新北市新莊區富貴路502號4樓" },
-      { type: "業者", area: "新北市", name: "鼎倫意志力租屋有限公司", phone: "02-89530199", address: "新北市板橋區板新路27號8樓" },
-      { type: "業者", area: "新北市", name: "兆基屋管股份有限公司新北第一分公司", phone: "02-2941-6222", address: "新北市板橋區三民路2段37號18樓之1" },
-      { type: "業者", area: "新北市", name: "五泰房屋仲介有限公司", phone: "0800-666-464", address: "新北市五股區新五路三段141號" },
-      { type: "公會", area: "桃園市", name: "桃園市租賃住宅服務商業同業公會", phone: "03-434-2020", address: "桃園市中壢區中央西路一段120號20樓之7" },
-      { type: "業者", area: "桃園市", name: "鼎倫租賃住宅代管有限公司", phone: "03-493-1199", address: "桃園市中壢區環西路二段369號" },
-      { type: "業者", area: "桃園市", name: "大佳地產股份有限公司", phone: "0800-321-701", address: "桃園市桃園區同安街455巷3弄9號" },
-      { type: "公會", area: "臺南市", name: "臺南市租賃住宅服務商業同業公會", phone: "06-298-7051", address: "臺南市安平區永華路二段248號8樓之2" },
-      { type: "業者", area: "臺南市", name: "兆基屋管股份有限公司台南分公司", phone: "06-220-0022", address: "臺南市北區文賢一路300巷29號" },
-      { type: "業者", area: "臺南市", name: "土帝公地產開發有限公司", phone: "06-279-7245", address: "臺南市安南區大安街447號" },
-      { type: "公會", area: "高雄市", name: "高雄市租賃住宅服務商業同業公會", phone: "07-221-1659", address: "高雄市苓雅區新光路38號11樓之3、5" },
-      { type: "業者", area: "高雄市", name: "兆基屋管股份有限公司高雄分公司", phone: "07-222-2211/0800-666-444", address: "高雄市苓雅區中正二路175號19樓之2" },
-      { type: "業者", area: "高雄市", name: "大管家租賃住宅服務有限公司", phone: "07-799-8859", address: "高雄市鳳山區青年路一段322號" }
-    ];
-
-    const areaSelect = document.getElementById("areaSelect");
-    const phoneInput = document.getElementById("phoneInput");
-    const onlyVendors = document.getElementById("onlyVendors");
-    const resetBtn = document.getElementById("resetBtn");
-    const cards = document.getElementById("cards");
-    const modalOverlay = document.getElementById("modalOverlay");
-    const modalClose = document.getElementById("modalClose");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalArea = document.getElementById("modalArea");
-    const modalPhone = document.getElementById("modalPhone");
-    const modalPhoneLink = document.getElementById("modalPhoneLink");
-    const modalCallLabel = document.getElementById("modalCallLabel");
-    const modalAddress = document.getElementById("modalAddress");
-
-    const vendorCount = vendors.filter(v => v.type === "業者").length;
-    const guildCount = vendors.filter(v => v.type === "公會").length;
-    const areaCount = new Set(vendors.map(v => v.area)).size;
-
-    document.getElementById("vendorCount").textContent = vendorCount;
-    document.getElementById("guildCount").textContent = guildCount;
-    document.getElementById("areaCount").textContent = areaCount;
-
-    function normalize(value) {
-      return String(value || "")
-        .toLowerCase()
-        .replaceAll("臺", "台")
-        .replace(/[\-\s]/g, "");
-    }
-
-    function areaRank(area) {
-      const priority = ["台北市", "新北市", "桃園市", "臺中市", "臺南市", "高雄市"];
-      const index = priority.indexOf(area);
-      return index === -1 ? 99 : index;
-    }
-
-    function vendorRank(v) {
-      if (v.area === "臺中市" && v.name === "總管家租賃住宅服務股份有限公司") return -1;
-      return 0;
-    }
-
-    function safeTel(phone) {
-      return phone.split("/")[0].replace(/[^0-9+]/g, "");
-    }
-
-    function setupAreas() {
-      const areas = Array.from(new Set(vendors.map(v => v.area)))
-        .sort((a, b) => areaRank(a) - areaRank(b) || a.localeCompare(b, "zh-Hant"));
-      areaSelect.innerHTML = `<option value="全部區域">全部區域</option>` + areas.map(area => `<option value="${area}">${area}</option>`).join("");
-    }
-
-    function getFiltered() {
-      const area = areaSelect.value;
-      const phone = normalize(phoneInput.value);
-      return vendors
-        .filter(v => onlyVendors.checked ? v.type === "業者" : true)
-        .filter(v => area === "全部區域" || v.area === area)
-        .filter(v => !phone || normalize(v.phone).includes(phone))
-        .sort((a, b) => areaRank(a.area) - areaRank(b.area) || vendorRank(a) - vendorRank(b) || a.name.localeCompare(b.name, "zh-Hant"));
-    }
-
-    function render() {
-      const list = getFiltered();
-      document.getElementById("resultCount").textContent = list.length;
-
-      if (!list.length) {
-        cards.className = "empty";
-        cards.innerHTML = `<strong>沒有找到卡牌</strong><span>換個區域或電話片段再試一次。</span>`;
-        return;
-      }
-
-      cards.className = "grid";
-      cards.innerHTML = list.map((v, index) => `
-        <article class="card" data-index="${vendors.indexOf(v)}" style="animation-delay:${Math.min(index * 0.018, 0.28)}s">
-          <div class="card-inner">
-            <div class="card-top">
-              <span class="area-pill">🏢 ${v.area}・${v.type}</span>
-              <span class="stars" aria-label="五星合法卡牌">★★★★★</span>
-            </div>
-            <h2 class="name">${v.name}</h2>
-            <p class="address">📍 ${v.address}</p>
-            <div class="consult">免費諮詢・歡迎來電</div>
-          </div>
-        </article>
-      `).join("");
-
-      cards.querySelectorAll(".card").forEach(card => {
-        card.addEventListener("click", () => openModal(vendors[Number(card.dataset.index)]));
-      });
-    }
-
-    function openModal(v) {
-      modalArea.textContent = `🏢 ${v.area}・${v.type}`;
-      modalTitle.textContent = v.name;
-      modalPhone.textContent = `☎ ${v.phone}`;
-      modalCallLabel.textContent = `✨ 立即撥打：${v.name}`;
-      modalPhoneLink.href = `tel:${safeTel(v.phone)}`;
-      modalAddress.textContent = `📍 ${v.address}`;
-      modalOverlay.hidden = false;
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeModal() {
-      modalOverlay.hidden = true;
-      document.body.style.overflow = "";
-    }
-
-    [areaSelect, phoneInput, onlyVendors].forEach(el => {
-      el.addEventListener("input", render);
-      el.addEventListener("change", render);
-    });
-
-    resetBtn.addEventListener("click", () => {
-      areaSelect.value = "全部區域";
-      phoneInput.value = "";
-      onlyVendors.checked = true;
-      render();
-    });
-
-    modalClose.addEventListener("click", closeModal);
-    modalOverlay.addEventListener("click", e => {
-      if (e.target === modalOverlay) closeModal();
-    });
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape" && !modalOverlay.hidden) closeModal();
-    });
-
-    setupAreas();
-    render();
+    const cityNames=["台北市","新北市","桃園市","臺中市","臺南市","高雄市","基隆市","新竹市","新竹縣","苗栗縣","彰化縣","南投縣","雲林縣","嘉義市","嘉義縣","屏東縣","宜蘭縣","花蓮縣","臺東縣"];
+    const phonePattern=/(0800-\d{3}-\d{3}|0809-\d{3}-\d{3}|\d{2,4}-[\d-]+(?:\/\d{2,4}-[\d-]+)?)/;
+    function parseData(){const raw=document.getElementById("raw-data").textContent.split(/\n+/).map(s=>s.trim()).filter(Boolean);let currentType="公會",currentArea="";const out=[];for(const line of raw){if(line==="公會"){currentType="公會";currentArea="";continue}if(line.endsWith("業者")){currentType="業者";currentArea=line.replace("業者","");continue}const m=line.match(phonePattern);if(!m)continue;const phone=m[0];const name=line.slice(0,m.index).trim();const address=line.slice(m.index+phone.length).trim();let area=currentArea;if(currentType==="公會"){area=cityNames.find(c=>name.startsWith(c))||"公會"}out.push({type:currentType,area,name,phone,address})}return out}
+    const vendors=parseData();
+    const areaSelect=document.getElementById("areaSelect"),phoneInput=document.getElementById("phoneInput"),onlyVendors=document.getElementById("onlyVendors"),resetBtn=document.getElementById("resetBtn"),cards=document.getElementById("cards"),modalOverlay=document.getElementById("modalOverlay"),modalCard=document.getElementById("modalCard"),modalClose=document.getElementById("modalClose"),modalTitle=document.getElementById("modalTitle"),modalArea=document.getElementById("modalArea"),modalPhone=document.getElementById("modalPhone"),modalPhoneLink=document.getElementById("modalPhoneLink"),modalCallLabel=document.getElementById("modalCallLabel"),modalAddress=document.getElementById("modalAddress");
+    document.getElementById("vendorCount").textContent=vendors.filter(v=>v.type==="業者").length;document.getElementById("guildCount").textContent=vendors.filter(v=>v.type==="公會").length;document.getElementById("areaCount").textContent=new Set(vendors.map(v=>v.area)).size;
+    function normalize(value){return String(value||"").toLowerCase().replaceAll("臺","台").replace(/[-\s]/g,"")}function areaRank(area){const p=["台北市","新北市","桃園市","臺中市","臺南市","高雄市"];const i=p.indexOf(area);return i===-1?99:i}function vendorRank(v){return v.area==="臺中市"&&v.name==="總管家租賃住宅服務股份有限公司"?-1:0}function safeTel(phone){return phone.split("/")[0].replace(/[^0-9+]/g,"")}function setupAreas(){const areas=Array.from(new Set(vendors.map(v=>v.area))).sort((a,b)=>areaRank(a)-areaRank(b)||a.localeCompare(b,"zh-Hant"));areaSelect.innerHTML='<option value="全部區域">全部區域</option>'+areas.map(a=>`<option value="${a}">${a}</option>`).join("")}function getFiltered(){const area=areaSelect.value,phone=normalize(phoneInput.value);return vendors.filter(v=>onlyVendors.checked?v.type==="業者":true).filter(v=>area==="全部區域"||v.area===area).filter(v=>!phone||normalize(v.phone).includes(phone)).sort((a,b)=>areaRank(a.area)-areaRank(b.area)||vendorRank(a)-vendorRank(b)||a.name.localeCompare(b.name,"zh-Hant"))}
+    function render(){const list=getFiltered();document.getElementById("resultCount").textContent=list.length;if(!list.length){cards.className="empty";cards.innerHTML='<strong>沒有找到卡牌</strong><span>換個區域或電話片段再試一次。</span>';return}cards.className="grid";cards.innerHTML=list.map((v,i)=>`<article class="card" data-index="${vendors.indexOf(v)}" style="animation-delay:${Math.min(i*.018,.28)}s"><div class="card-inner"><div class="card-top"><span class="area-pill">🏢 ${v.area}・${v.type}</span><span class="stars" aria-label="五星合法卡牌">★★★★★</span></div><h2 class="name">${v.name}</h2><p class="address">📍 ${v.address}</p><div class="consult">免費諮詢・歡迎來電</div></div></article>`).join("");cards.querySelectorAll(".card").forEach(card=>card.addEventListener("click",()=>openModal(vendors[Number(card.dataset.index)])))}
+    function openModal(v){modalArea.textContent=`🏢 ${v.area}・${v.type}`;modalTitle.textContent=v.name;modalPhone.textContent=`☎ ${v.phone}`;modalCallLabel.textContent=`✨ 立即撥打：${v.name}`;modalPhoneLink.href=`tel:${safeTel(v.phone)}`;modalAddress.textContent=`📍 ${v.address}`;modalOverlay.hidden=false;document.body.style.overflow="hidden";modalCard.classList.remove("shine-burst");modalPhoneLink.classList.remove("glow-phone");void modalCard.offsetWidth;modalCard.classList.add("shine-burst");modalPhoneLink.classList.add("glow-phone");setTimeout(()=>{modalCard.classList.remove("shine-burst");modalPhoneLink.classList.remove("glow-phone")},1600)}function closeModal(){modalOverlay.hidden=true;document.body.style.overflow="";modalCard.classList.remove("shine-burst");modalPhoneLink.classList.remove("glow-phone")}
+    [areaSelect,phoneInput,onlyVendors].forEach(el=>{el.addEventListener("input",render);el.addEventListener("change",render)});resetBtn.addEventListener("click",()=>{areaSelect.value="全部區域";phoneInput.value="";onlyVendors.checked=true;render()});modalClose.addEventListener("click",closeModal);modalOverlay.addEventListener("click",e=>{if(e.target===modalOverlay)closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!modalOverlay.hidden)closeModal()});setupAreas();render();
   </script>
 </body>
 </html>
