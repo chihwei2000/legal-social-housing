@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>五星合法社宅廠商查詢</title>
+  <style>
+    :root {
+      --gold: #facc15;
+      --gold2: #f59e0b;
+      --dark: #0f172a;
+      --shadow: 0 24px 70px rgba(0,0,0,.34);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at top left, rgba(250,204,21,.22), transparent 34%),
+        radial-gradient(circle at 85% 15%, rgba(59,130,246,.22), transparent 30%),
+        linear-gradient(160deg, #020617, #0f172a 45%, #111827);
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 30px 0 56px;
+    }
+
+    .floating-badge {
+      width: 100%;
+      margin: 0 auto 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(253,230,138,.35);
+      background: rgba(250,204,21,.13);
+      color: #fde68a;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee {
+      position: relative;
+      height: 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      align-items: center;
+      min-width: max-content;
+      animation: marqueeMove 18s linear infinite;
+    }
+
+    .marquee-track span {
+      display: inline-block;
+      padding-right: 60px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    @keyframes marqueeMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr .75fr;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .hero-main, .score-box, .filters, .empty {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: clamp(24px, 5vw, 38px);
+      background: rgba(255,255,255,.09);
+      backdrop-filter: blur(18px);
+      animation: rise .65s ease both;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #fde68a;
+      background: rgba(250,204,21,.16);
+      border: 1px solid rgba(253,230,138,.32);
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: .95;
+      letter-spacing: -2px;
+      font-weight: 1000;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      color: #e2e8f0;
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.65;
+      max-width: 780px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(2,6,23,.7);
+      color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,.1);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .score-box {
+      background: linear-gradient(135deg, #fde047, #f59e0b);
+      color: #0f172a;
+      padding: 26px;
+      animation: rise .65s ease .08s both;
+    }
+
+    .score-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .score-label { font-size: 14px; font-weight: 900; opacity: .72; }
+    .score-number { font-size: 56px; font-weight: 1000; line-height: 1; margin-top: 4px; }
+    .score-title { font-weight: 900; }
+    .shield { font-size: 54px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.2)); }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .mini {
+      border-radius: 20px;
+      background: rgba(255,255,255,.42);
+      padding: 16px;
+    }
+
+    .mini strong {
+      display: block;
+      font-size: 30px;
+      font-weight: 1000;
+      margin-top: 4px;
+    }
+
+    .source {
+      margin-top: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      opacity: .78;
+      line-height: 1.55;
+    }
+
+    .filters {
+      padding: 18px;
+      margin-bottom: 26px;
+      background: rgba(15,23,42,.78);
+      backdrop-filter: blur(18px);
+      animation: rise .65s ease .16s both;
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    label span {
+      display: block;
+      margin-bottom: 8px;
+      color: #cbd5e1;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    select, input, button {
+      width: 100%;
+      height: 50px;
+      border: 0;
+      border-radius: 18px;
+      font: inherit;
+      font-weight: 900;
+      outline: none;
+    }
+
+    select, input {
+      padding: 0 15px;
+      background: white;
+      color: #0f172a;
+    }
+
+    input:focus, select:focus {
+      box-shadow: 0 0 0 5px rgba(250,204,21,.35);
+    }
+
+    button {
+      cursor: pointer;
+      padding: 0 18px;
+      color: #0f172a;
+      background: #facc15;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      background: #fde047;
+    }
+
+    .filter-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      color: #cbd5e1;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .checkbox {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .checkbox input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--gold);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      background: white;
+      color: #0f172a;
+      padding: 20px;
+      min-height: 220px;
+      box-shadow: 0 18px 46px rgba(0,0,0,.26);
+      border: 1px solid rgba(255,255,255,.25);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: cardIn .45s ease forwards;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotate(-.35deg) scale(1.018);
+      box-shadow:
+        0 0 0 4px rgba(250,204,21,.75),
+        0 0 30px rgba(250,204,21,.55),
+        0 28px 70px rgba(0,0,0,.34);
+      border-color: rgba(250,204,21,.8);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      height: 5px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, #facc15, #f59e0b, transparent);
+      transform: translateX(-100%);
+      animation: shine 2.6s linear infinite;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -44px;
+      top: -44px;
+      width: 132px;
+      height: 132px;
+      border-radius: 999px;
+      background: rgba(253,224,71,.72);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+
+    .card-inner { position: relative; z-index: 1; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .area-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      background: #020617;
+      color: white;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 1000;
+    }
+
+    .stars {
+      color: #f59e0b;
+      letter-spacing: -1px;
+      white-space: nowrap;
+      text-shadow: 0 2px 8px rgba(245,158,11,.25);
+    }
+
+    .name {
+      margin: 20px 0 16px;
+      font-size: 24px;
+      line-height: 1.22;
+      min-height: 62px;
+      font-weight: 1000;
+    }
+
+    .phone-button {
+      display: none;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: white;
+      background: #020617;
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 14px 28px rgba(15,23,42,.28);
+      outline: 4px solid rgba(250,204,21,.36);
+      transition: transform .18s ease;
+    }
+
+    .phone-button:hover { transform: scale(1.03); }
+
+    .phone-button::after {
+      content: "";
+      position: absolute;
+      right: -28px;
+      bottom: -28px;
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      background: rgba(250,204,21,.25);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    .call-label {
+      position: relative;
+      z-index: 1;
+      display: block;
+      color: #fde68a;
+      font-size: 12px;
+      letter-spacing: .5px;
+      font-weight: 1000;
+      line-height: 1.45;
+    }
+
+    .phone-number {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin-top: 4px;
+      font-size: clamp(29px, 4vw, 42px);
+      line-height: 1;
+      font-weight: 1000;
+      letter-spacing: -1.5px;
+      word-break: break-word;
+    }
+
+    .address {
+      margin: 18px 0 0;
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .consult {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 18px;
+      background: #fef3c7;
+      border: 1px solid #facc15;
+      color: #0f172a;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 1000;
+      letter-spacing: .5px;
+    }
+
+    .empty {
+      padding: 48px 24px;
+      text-align: center;
+      border-style: dashed;
+      background: rgba(255,255,255,.06);
+    }
+
+    .empty strong {
+      display: block;
+      font-size: 30px;
+      font-weight: 1000;
+      margin-bottom: 8px;
+    }
+
+    .empty span { color: #cbd5e1; font-weight: 700; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2,6,23,.72);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 50;
+    }
+
+    .modal-overlay[hidden] { display: none; }
+
+    .modal-card {
+      position: relative;
+      width: min(620px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: #fff;
+      color: #0f172a;
+      border-radius: 30px;
+      padding: 24px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.42);
+      border: 3px solid rgba(250,204,21,.75);
+      animation: modalIn .22s ease;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      padding-right: 46px;
+    }
+
+    .modal-title {
+      margin: 18px 0 16px;
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 1000;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: #0f172a;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover { background: #1e293b; transform: scale(1.04); }
+
+    .modal-card .phone-button {
+      display: block;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shine {
+      to { transform: translateX(100%); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: .55; }
+      50% { transform: scale(1.22); opacity: .9; }
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(.96) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+      .filter-grid { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 18px, 1180px); padding-top: 22px; }
+      .marquee { height: 44px; }
+      .marquee-track span { font-size: 12px; padding-right: 42px; }
+      .filter-grid, .grid { grid-template-columns: 1fr; }
+      .hero-main, .score-box, .filters, .card, .modal-card { border-radius: 22px; }
+      .phone-number { font-size: 32px; }
+      .modal-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="floating-badge marquee" aria-label="社會住宅包租代管說明">
+      <div class="marquee-track">
+        <span>房東享稅減免、專業代管、穩收租，房客有補貼、輕鬆住好屋，社會住宅包租代管讓租屋成為省心安居的好選擇</span>
+        <span>房東享稅減免、專業代管、穩收租，房客有補貼、輕鬆住好屋，社會住宅包租代管讓租屋成為省心安居的好選擇</span>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="pill">🏆 「中央版社宅包租代管計畫」</div>
+        <h1>五星合法<br>社宅廠商</h1>
+        <p class="subtitle">選擇區域、輸入聯絡電話即可，立刻召喚合法廠商。</p>
+        <div class="tags">
+          <span class="tag">#合法名單</span>
+          <span class="tag">#區域篩選</span>
+          <span class="tag">#電話查詢</span>         
+        </div>
+      </div>
+
+      <aside class="score-box">
+        <div class="score-top">
+          <div>
+            <div class="score-label">目前資料庫</div>
+            <div class="score-number" id="vendorCount">0</div>
+            <div class="score-title"><span id="vendorLabel">家業者</span> + <span id="guildCount">0</span> 個公會</div>
+          </div>
+          <div class="shield">🛡️</div>
+        </div>
+        <div class="mini-stats">
+          <div class="mini">
+            <div class="score-label">涵蓋區域</div>
+            <strong id="areaCount">0</strong>
+          </div>
+          <div class="mini">
+            <div class="score-label">查詢結果</div>
+            <strong id="resultCount">0</strong>
+          </div>
+        </div>
+        <p class="source">資料來源：國家住宅及都市更新中心五期連絡資訊。實際合作前，仍建議再以官方資訊或電話確認最新資料。</p>
+      </aside>
+    </section>
+
+    <section class="filters">
+      <div class="filter-grid">
+        <label>
+          <span>📍 區域</span>
+          <select id="areaSelect"></select>
+        </label>
+        <label>
+          <span>☎️ 聯絡電話</span>
+          <input id="phoneInput" type="search" placeholder="例：04、0800、058" />
+        </label>
+        <button id="resetBtn" type="button">↻ 重置</button>
+      </div>
+      <div class="filter-bottom">
+        <label class="checkbox"><input id="onlyVendors" type="checkbox" checked />只顯示業者，隱藏公會</label>
+        <div>提示：首頁先隱藏電話，點一下卡牌會置中顯示並出現電話。</div>
+      </div>
+    </section>
+
+    <section id="cards" class="grid" aria-live="polite"></section>
+
+    <div id="modalOverlay" class="modal-overlay" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" type="button" aria-label="關閉">✕</button>
+        <div class="modal-head">
+          <span class="area-pill" id="modalArea"></span>
+          <span class="stars" aria-label="五星合法卡牌">★★★★★</span>
+        </div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <a class="phone-button" id="modalPhoneLink" href="#">
+          <span class="call-label" id="modalCallLabel"></span>
+          <span class="phone-number" id="modalPhone"></span>
+        </a>
+        <p class="address" id="modalAddress"></p>
+        <div class="consult">免費諮詢・歡迎來電</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const vendors = [
+      { type: "公會", area: "臺中市", name: "臺中市租賃住宅服務商業同業公會", phone: "04-2293-0623", address: "臺中市西屯區文心路三段241號2樓之7" },
+      { type: "業者", area: "臺中市", name: "總管家租賃住宅服務股份有限公司", phone: "0800-058-988", address: "臺中市北區台灣大道二段340號9樓之2" },
+      { type: "業者", area: "臺中市", name: "兆基屋管股份有限公司台中分公司", phone: "04-2220-5353", address: "臺中市北區三民路三段132號" },
+      { type: "業者", area: "臺中市", name: "大管家管理顧問有限公司", phone: "04-2322-2277", address: "臺中市西屯區大墩路921號2樓" },
+      { type: "業者", area: "臺中市", name: "星鴻股份有限公司", phone: "04-3707-2368", address: "臺中市北屯區文心路四段698號6樓之1" },
+      { type: "業者", area: "臺中市", name: "意志力投資有限公司", phone: "04-2242-0101", address: "臺中市北屯區文心路四段955號11樓之1" },
+      { type: "業者", area: "臺中市", name: "棣寶不動產有限公司", phone: "04-2436-5885", address: "臺中市北屯區軍功路一段543號" },
+      { type: "業者", area: "臺中市", name: "嘉暘開發有限公司台中分公司", phone: "03-458-8555", address: "臺中市西屯區文心路三段241號21樓之6" },
+      { type: "業者", area: "臺中市", name: "昶勝不動產仲介經紀有限公司", phone: "04-2328-0999", address: "臺中市西區美村路一段76號1樓" },
+      { type: "業者", area: "臺中市", name: "匯揚不動產經紀實業有限公司", phone: "04-2233-1007", address: "臺中市北屯區文心路四段290號1樓" },
+      { type: "業者", area: "臺中市", name: "喬陽管理顧問有限公司台中分公司", phone: "03-355-5200", address: "臺中市西屯區文心路二段598號7樓之3" },
+      { type: "業者", area: "臺中市", name: "五泰房屋仲介有限公司台中分公司", phone: "0800-666-464", address: "臺中市北屯區崇德二路二段276-1號" },
+      { type: "業者", area: "臺中市", name: "頎策開發有限公司", phone: "04-229-7655", address: "臺中市西屯區文心路三段241號22樓之2" },
+      { type: "業者", area: "臺中市", name: "聯勤不動產經紀有限公司", phone: "04-2422-1555", address: "臺中市北區崇德路一段492號" },
+      { type: "業者", area: "臺中市", name: "匯康資產管理有限公司台中分公司", phone: "02-6617-8885", address: "臺中市南區樹義里文心南路837號" },
+      { type: "業者", area: "臺中市", name: "嘉禾地產有限公司台中分公司", phone: "04-2291-2277", address: "臺中市北屯區平德路74號1樓" },
+      { type: "業者", area: "臺中市", name: "嘉晟租賃住宅代管有限公司台中分公司", phone: "03-252-2518", address: "臺中市北屯區文心路四段698號23樓之1" },
+      { type: "公會", area: "台北市", name: "台北市租賃住宅服務商業同業公會", phone: "02-2577-1778", address: "台北市中山區建國北路三段92號5樓" },
+      { type: "業者", area: "台北市", name: "兆基屋管股份有限公司", phone: "02-2395-5522", address: "臺北市內湖區內湖路一段98號" },
+      { type: "業者", area: "台北市", name: "大管家房屋管理顧問有限公司", phone: "02-2731-7933", address: "臺北市中山區長安東路一段25號9樓" },
+      { type: "業者", area: "台北市", name: "禾豐好宅管理顧問股份有限公司", phone: "02-2547-5003", address: "臺北市中山區南京東路三段197號七樓" },
+      { type: "業者", area: "台北市", name: "星鴻股份有限公司", phone: "02-7755-2669", address: "臺北市萬華區中華路一段106號四樓" },
+      { type: "業者", area: "台北市", name: "匯康資產管理有限公司", phone: "02-6617-8885", address: "臺北市中山區松江路139號2樓之4" },
+      { type: "公會", area: "新北市", name: "新北市租賃住宅服務商業同業公會", phone: "02-8951-8110", address: "新北市新莊區富貴路502號4樓" },
+      { type: "業者", area: "新北市", name: "鼎倫意志力租屋有限公司", phone: "02-89530199", address: "新北市板橋區板新路27號8樓" },
+      { type: "業者", area: "新北市", name: "兆基屋管股份有限公司新北第一分公司", phone: "02-2941-6222", address: "新北市板橋區三民路2段37號18樓之1" },
+      { type: "業者", area: "新北市", name: "五泰房屋仲介有限公司", phone: "0800-666-464", address: "新北市五股區新五路三段141號" },
+      { type: "公會", area: "桃園市", name: "桃園市租賃住宅服務商業同業公會", phone: "03-434-2020", address: "桃園市中壢區中央西路一段120號20樓之7" },
+      { type: "業者", area: "桃園市", name: "鼎倫租賃住宅代管有限公司", phone: "03-493-1199", address: "桃園市中壢區環西路二段369號" },
+      { type: "業者", area: "桃園市", name: "大佳地產股份有限公司", phone: "0800-321-701", address: "桃園市桃園區同安街455巷3弄9號" },
+      { type: "公會", area: "臺南市", name: "臺南市租賃住宅服務商業同業公會", phone: "06-298-7051", address: "臺南市安平區永華路二段248號8樓之2" },
+      { type: "業者", area: "臺南市", name: "兆基屋管股份有限公司台南分公司", phone: "06-220-0022", address: "臺南市北區文賢一路300巷29號" },
+      { type: "業者", area: "臺南市", name: "土帝公地產開發有限公司", phone: "06-279-7245", address: "臺南市安南區大安街447號" },
+      { type: "公會", area: "高雄市", name: "高雄市租賃住宅服務商業同業公會", phone: "07-221-1659", address: "高雄市苓雅區新光路38號11樓之3、5" },
+      { type: "業者", area: "高雄市", name: "兆基屋管股份有限公司高雄分公司", phone: "07-222-2211/0800-666-444", address: "高雄市苓雅區中正二路175號19樓之2" },
+      { type: "業者", area: "高雄市", name: "大管家租賃住宅服務有限公司", phone: "07-799-8859", address: "高雄市鳳山區青年路一段322號" }
+    ];
+
+    const areaSelect = document.getElementById("areaSelect");
+    const phoneInput = document.getElementById("phoneInput");
+    const onlyVendors = document.getElementById("onlyVendors");
+    const resetBtn = document.getElementById("resetBtn");
+    const cards = document.getElementById("cards");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const modalClose = document.getElementById("modalClose");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalArea = document.getElementById("modalArea");
+    const modalPhone = document.getElementById("modalPhone");
+    const modalPhoneLink = document.getElementById("modalPhoneLink");
+    const modalCallLabel = document.getElementById("modalCallLabel");
+    const modalAddress = document.getElementById("modalAddress");
+
+    const vendorCount = vendors.filter(v => v.type === "業者").length;
+    const guildCount = vendors.filter(v => v.type === "公會").length;
+    const areaCount = new Set(vendors.map(v => v.area)).size;
+
+    document.getElementById("vendorCount").textContent = vendorCount;
+    document.getElementById("guildCount").textContent = guildCount;
+    document.getElementById("areaCount").textContent = areaCount;
+
+    function normalize(value) {
+      return String(value || "")
+        .toLowerCase()
+        .replaceAll("臺", "台")
+        .replace(/[\-\s]/g, "");
+    }
+
+    function areaRank(area) {
+      const priority = ["台北市", "新北市", "桃園市", "臺中市", "臺南市", "高雄市"];
+      const index = priority.indexOf(area);
+      return index === -1 ? 99 : index;
+    }
+
+    function vendorRank(v) {
+      if (v.area === "臺中市" && v.name === "總管家租賃住宅服務股份有限公司") return -1;
+      return 0;
+    }
+
+    function safeTel(phone) {
+      return phone.split("/")[0].replace(/[^0-9+]/g, "");
+    }
+
+    function setupAreas() {
+      const areas = Array.from(new Set(vendors.map(v => v.area)))
+        .sort((a, b) => areaRank(a) - areaRank(b) || a.localeCompare(b, "zh-Hant"));
+      areaSelect.innerHTML = `<option value="全部區域">全部區域</option>` + areas.map(area => `<option value="${area}">${area}</option>`).join("");
+    }
+
+    function getFiltered() {
+      const area = areaSelect.value;
+      const phone = normalize(phoneInput.value);
+      return vendors
+        .filter(v => onlyVendors.checked ? v.type === "業者" : true)
+        .filter(v => area === "全部區域" || v.area === area)
+        .filter(v => !phone || normalize(v.phone).includes(phone))
+        .sort((a, b) => areaRank(a.area) - areaRank(b.area) || vendorRank(a) - vendorRank(b) || a.name.localeCompare(b.name, "zh-Hant"));
+    }
+
+    function render() {
+      const list = getFiltered();
+      document.getElementById("resultCount").textContent = list.length;
+
+      if (!list.length) {
+        cards.className = "empty";
+        cards.innerHTML = `<strong>沒有找到卡牌</strong><span>換個區域或電話片段再試一次。</span>`;
+        return;
+      }
+
+      cards.className = "grid";
+      cards.innerHTML = list.map((v, index) => `
+        <article class="card" data-index="${vendors.indexOf(v)}" style="animation-delay:${Math.min(index * 0.018, 0.28)}s">
+          <div class="card-inner">
+            <div class="card-top">
+              <span class="area-pill">🏢 ${v.area}・${v.type}</span>
+              <span class="stars" aria-label="五星合法卡牌">★★★★★</span>
+            </div>
+            <h2 class="name">${v.name}</h2>
+            <p class="address">📍 ${v.address}</p>
+            <div class="consult">免費諮詢・歡迎來電</div>
+          </div>
+        </article>
+      `).join("");
+
+      cards.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("click", () => openModal(vendors[Number(card.dataset.index)]));
+      });
+    }
+
+    function openModal(v) {
+      modalArea.textContent = `🏢 ${v.area}・${v.type}`;
+      modalTitle.textContent = v.name;
+      modalPhone.textContent = `☎ ${v.phone}`;
+      modalCallLabel.textContent = `✨ 立即撥打：${v.name}`;
+      modalPhoneLink.href = `tel:${safeTel(v.phone)}`;
+      modalAddress.textContent = `📍 ${v.address}`;
+      modalOverlay.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modalOverlay.hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    [areaSelect, phoneInput, onlyVendors].forEach(el => {
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    });
+
+    resetBtn.addEventListener("click", () => {
+      areaSelect.value = "全部區域";
+      phoneInput.value = "";
+      onlyVendors.checked = true;
+      render();
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modalOverlay.addEventListener("click", e => {
+      if (e.target === modalOverlay) closeModal();
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && !modalOverlay.hidden) closeModal();
+    });
+
+    setupAreas();
+    render();
+  </script>
+</body>
+</html>
